@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Matchmaker</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="glass-card">
+
+        <h1>🚀 AI Career Matchmaker</h1>
+
+        <p class="subtitle">
+            Discover Your Ideal Tech Career Path
+        </p>
+
+        <div class="role-count">
+            Total Career Roles: {{ total_roles }}
+        </div>
+
+        <form method="POST" id="careerForm">
+
+            <div class="skills-container">
+
+                <div class="skill-chip">Python</div>
+                <div class="skill-chip">SQL</div>
+                <div class="skill-chip">Machine Learning</div>
+                <div class="skill-chip">AWS</div>
+                <div class="skill-chip">Docker</div>
+                <div class="skill-chip">Flask</div>
+                <div class="skill-chip">React</div>
+                <div class="skill-chip">JavaScript</div>
+                <div class="skill-chip">Cloud</div>
+                <div class="skill-chip">Linux</div>
+
+            </div>
+
+            <input
+                id="skillsInput"
+                type="text"
+                name="skills"
+                placeholder="Python, SQL, Machine Learning"
+                required
+            >
+
+            <button type="submit" id="generateBtn">
+                Generate Recommendation
+            </button>
+
+            <div id="loader" class="loader-container">
+
+                <div class="loader-spinner"></div>
+
+                <p id="loaderText">
+                    Analyzing Skills...
+                </p>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    {% if recommendations %}
+
+    <div style="text-align:center; margin-bottom:20px;">
+
+        <a href="/download-report"
+        class="download-btn">
+
+            📄 Download Career Report
+
+        </a>
+
+    </div>
+
+    <div style="text-align:center; margin-bottom:20px;">
+
+    </div>
+
+    <div class="results-section">
+
+        <h2>🎯 Top Career Matches</h2>
+
+        {% for career in recommendations %}
+
+        <div class="result-card">
+
+            <div class="badge">
+                {{ career.badge }}
+            </div>
+
+            <h3 class="career-title">
+                {{ career.role }}
+            </h3>
+
+            <div class="circle-wrapper">
+
+            <div
+                class="circle-score"
+                style="--score: {{ career.score }};"
+            >
+
+                <div class="circle-inner">
+                    {{ career.score }}%
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="career-stats">
+
+            <div class="stat-card">
+                <h4>💰 Salary</h4>
+                <p>{{ career.salary }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h4>🔥 Demand</h4>
+                <p>{{ career.demand }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h4>📈 Growth</h4>
+                <p>{{ career.growth }}</p>
+            </div>
+
+        </div>
+
+                <div class="career-description">
+
+            <h4>🤖 Career Overview</h4>
+
+            <p>
+                {{ career.description }}
+            </p>
+
+        </div>
+
+        <div class="why-match-box">
+
+            <h4>🎯 Why This Match?</h4>
+
+            <ul>
+
+                {% for reason in career.why_match %}
+
+                <li>✔ {{ reason }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+            <div class="section-box">
+
+                <h4>✅ Matched Skills</h4>
+
+                {% if career.matched_skills %}
+
+                <ul>
+
+                    {% for skill in career.matched_skills %}
+
+                    <li>{{ skill }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+                {% else %}
+
+                <p>No direct matches found</p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="section-box">
+
+                <h4>❌ Missing Skills</h4>
+
+                <ul>
+
+                    {% for skill in career.missing_skills %}
+
+                    <li>{{ skill }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+            <div class="section-box">
+
+                <h4>🛣 Career Roadmap</h4>
+
+                <ul>
+
+                    {% for step in career.roadmap %}
+
+                    <li>Learn {{ step }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+                <p>
+                    🎯 Become a
+                    <strong>{{ career.role }}</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    <div style="text-align:center; margin:50px 0;">
+
+        <a href="/about" class="download-btn">
+            ℹ About Project
+        </a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
