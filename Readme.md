@@ -76,7 +76,7 @@ AI-Career-Matchmaker/
 
 ### 1. Clone Repository
 
-git clone https://github.com/yourusername/AI-Career-Matchmaker.git
+git clone https://github.com/vishal-jindal2006/Task-3-Vishal-Jindal
 
 ### 2. Open Project Folder
 

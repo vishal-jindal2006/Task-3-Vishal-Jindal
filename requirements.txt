@@ -20,3 +20,7 @@ threadpoolctl==3.6.0
 tzdata==2026.2
 Werkzeug==3.1.8
 reportlab
+Flask
+pandas
+scikit-learn
+reportlab
