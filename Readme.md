@@ -2,6 +2,15 @@
 
 AI Career Matchmaker is a Flask-based web application that helps users discover the most suitable technology career paths based on their skills. The system uses Machine Learning (TF-IDF + Cosine Similarity) to match user skills with various tech roles and provides personalized career recommendations.
 
+
+##  Demo Link ( Preview )
+
+https://ai-career-recommendation-sdbf.onrender.com/
+
+## Screenshot Home Page Preview
+<img width="534" height="725" alt="{AD81F1EC-F02A-4615-9C05-F4ADBB51C5F7}" src="https://github.com/user-attachments/assets/17f4d59e-9136-4f30-a501-1e46dc25b810" />
+
+
 ## ✨ Features
 
 * 🎯 AI-powered career recommendations
